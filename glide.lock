@@ -1,5 +1,5 @@
 hash: 54caaa15882fe9b4fbdf764a73a522bf157c6a0b5bcc52699d41494c2aec3cb1
-updated: 2017-11-10T00:15:11.375707974+08:00
+updated: 2017-11-13T15:35:27.477409097+08:00
 imports:
 - name: github.com/sirupsen/logrus
   version: f006c2ac4710855cf0f916dd6b77acf6b048dc6e
@@ -10,7 +10,7 @@ imports:
   subpackages:
   - ssh/terminal
 - name: golang.org/x/sys
-  version: 4b45465282a4624cf39876842a017334f13b8aff
+  version: 1e2299c37cc91a509f1b12369872d27be0ce98a6
   repo: https://github.com/golang/sys.git
   vcs: git
   subpackages:
