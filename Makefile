@@ -17,7 +17,7 @@ GOTEST  := $(GO) test
 
 PACKAGES := $$(go list ./...| grep -vE 'vendor')
 
-.PHONY: update clean check build test setup-check
+.PHONY: update clean check build test init
 
 default: build
 
@@ -33,13 +33,14 @@ check:
 	@ gofmt -s -l . 2>&1 | $(GOCHECKER)
 
 update:
-	@ which glide >/dev/null || curl https://glide.sh/get | sh
-	@ which glide-vc || go get -v -u github.com/sgotti/glide-vc
 	glide update --strip-vendor --skip-test
 	@echo "removing test files"
 	glide vc --only-code --no-tests
 
-setup-check:
+init:
+	@ which glide >/dev/null || curl https://glide.sh/get | sh
+	@ which glide-vc >/dev/null || go get -v -u github.com/sgotti/glide-vc
+	@echo "update testing framework"
 	@ go get -u gopkg.in/check.v1
 
 clean:

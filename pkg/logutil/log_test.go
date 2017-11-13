@@ -8,6 +8,10 @@ import (
 	. "gopkg.in/check.v1"
 )
 
+const (
+	logPattern = `\d\d\d\d/\d\d/\d\d \d\d:\d\d:\d\d\.\d\d\d \[(fatal|error|warning|info|debug)\] .*?\n`
+)
+
 // Hook up gocheck into the "go test" runner.
 func Test(t *testing.T) {
 	TestingT(t)
@@ -31,4 +35,17 @@ func (s *testLogSuite) TestStringToLogLevel(c *C) {
 	c.Assert(stringToLogLevel("debug"), Equals, log.DebugLevel)
 	c.Assert(stringToLogLevel("info"), Equals, log.InfoLevel)
 	c.Assert(stringToLogLevel("else"), Equals, log.InfoLevel)
+}
+
+// TestLogging assure log format works.
+func (s *testLogSuite) TestLogging(c *C) {
+	conf := &LogConfig{Level: "warn", File: FileLogConfig{}}
+	c.Assert(InitLogger(conf), IsNil)
+
+	log.SetOutput(s.buf)
+
+	log.Warnf("this message come from logrus")
+	entry, err := s.buf.ReadString('\n')
+	c.Assert(err, IsNil)
+	c.Assert(entry, Matches, logPattern)
 }
