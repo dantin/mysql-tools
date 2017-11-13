@@ -143,6 +143,9 @@ func InitLogger(cfg *LogConfig) error {
 	var err error
 	once.Do(func() {
 		log.SetLevel(stringToLogLevel(cfg.Level))
+		if cfg.Format == "" {
+			cfg.Format = defaultLogFormat
+		}
 		log.SetFormatter(stringToLogFormatter(cfg.Format, cfg.DisableTimestamp))
 
 		if len(cfg.File.Filename) == 0 {
