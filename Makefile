@@ -6,14 +6,21 @@ LDFLAGS += -X "$(TOOLS_PKG)/pkg/utils.BuildTS=$(shell date -u '+%Y-%m-%d %I:%M:%
 LDFLAGS += -X "$(TOOLS_PKG)/pkg/utils.GitHash=$(shell git rev-parse HEAD)"
 LDFLAGS += -X "$(TOOLS_PKG)/pkg/utils.GitBranch=$(shell git rev-parse --abbrev-ref HEAD)"
 
+GOFILTER := grep -vE 'vendor'
+GOCHECKER := $(GOFILTER) | awk '{ print } END { if (NR > 0) { exit 1 } }'
+
 GO := GO15VENDOREXPERIMENT="1" go
 
-.PHONY: update clean
+.PHONY: update clean check
 
 default: build
 
 build:
 	$(GO) build -ldflags '$(LDFLAGS)' -o bin/drc cmd/drc/main.go
+
+check:
+	@echo "gofmt"
+	@ gofmt -s -l . 2>&1 | $(GOCHECKER)
 
 update:
 	which glide >/dev/null || curl https://glide.sh/get | sh
