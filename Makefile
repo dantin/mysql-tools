@@ -1,5 +1,4 @@
 TOOLS_PKG := github.com/dantin/mysql-tools
-VENDOR    := $(shell pwd)/_vendor
 
 LDFLAGS += -X "$(TOOLS_PKG)/pkg/utils.Version=0.0.1+git.$(shell git rev-parse --short HEAD)"
 LDFLAGS += -X "$(TOOLS_PKG)/pkg/utils.BuildTS=$(shell date -u '+%Y-%m-%d %I:%M:%S')"

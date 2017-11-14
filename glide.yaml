@@ -3,7 +3,7 @@ import:
 - package: github.com/sirupsen/logrus
   version: ^1.0.3
 - package: gopkg.in/natefinch/lumberjack.v2
-  version: v2
+  version: ^2.1.0
 - package: github.com/juju/errors
 - package: golang.org/x/net
   repo: https://github.com/golang/net.git
@@ -14,3 +14,5 @@ import:
 - package: golang.org/x/crypto
   repo: https://github.com/golang/crypto.git
   vcs: git
+testImport:
+- package: gopkg.in/check.v1

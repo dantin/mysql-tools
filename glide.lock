@@ -1,12 +1,12 @@
-hash: a0acb13398387e6994a3e341326c536dde60dcf8db8703ea19f8a99621cf8d98
-updated: 2017-11-13T17:53:39.573442983+08:00
+hash: 1aca5cc99484f3efe2b4d07ebdb00dcaabecf4ace64d12dfe0e426801dbce786
+updated: 2017-11-14T10:59:07.677125928+08:00
 imports:
 - name: github.com/juju/errors
   version: c7d06af17c68cd34c835053720b21f6549d9b0ee
 - name: github.com/sirupsen/logrus
   version: f006c2ac4710855cf0f916dd6b77acf6b048dc6e
 - name: golang.org/x/crypto
-  version: 6a293f2d4b14b8e6d3f0539e383f6d0d30fce3fd
+  version: 9f005a07e0d31d45e6656d241bb5c0f2efd4bc94
   repo: https://github.com/golang/crypto.git
   vcs: git
   subpackages:
@@ -16,7 +16,7 @@ imports:
   repo: https://github.com/golang/net.git
   vcs: git
 - name: golang.org/x/sys
-  version: 1e2299c37cc91a509f1b12369872d27be0ce98a6
+  version: 665f6529cca930e27b831a0d1dafffbe1c172924
   repo: https://github.com/golang/sys.git
   vcs: git
   subpackages:
@@ -24,4 +24,6 @@ imports:
   - windows
 - name: gopkg.in/natefinch/lumberjack.v2
   version: a96e63847dc3c67d17befa69c303767e2f84e54f
-testImports: []
+testImports:
+- name: gopkg.in/check.v1
+  version: ""

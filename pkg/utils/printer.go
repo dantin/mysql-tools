@@ -26,7 +26,7 @@ func PrintRawInfo(app string) {
 func LogRawInfo(app string) {
 	log.Infof("Welcome to %s.", app)
 	log.Infof("Release Version: %s", Version)
-	log.Printf("Git Commit Hash: %s\n", GitHash)
-	log.Printf("Git Branch: %s\n", GitBranch)
-	log.Printf("UTC Build Time: %s\n", BuildTS)
+	log.Printf("Git Commit Hash: %s", GitHash)
+	log.Printf("Git Branch: %s", GitBranch)
+	log.Printf("UTC Build Time: %s", BuildTS)
 }
