@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/dantin/mysql-tools/drc"
 	"github.com/dantin/mysql-tools/pkg/logutil"
@@ -31,6 +33,25 @@ func main() {
 	if err != nil {
 		log.Fatalf("initialize log error: %s", err)
 	}
-
 	utils.LogRawInfo("gravity")
+
+	svr := drc.NewServer(cfg)
+
+	sc := make(chan os.Signal, 1)
+	signal.Notify(sc,
+		syscall.SIGHUP,
+		syscall.SIGINT,
+		syscall.SIGTERM,
+		syscall.SIGQUIT)
+
+	go func() {
+		sig := <-sc
+		log.Infof("got signal [%d], exit", sig)
+		svr.Close()
+	}()
+
+	if err = svr.Start(); err != nil {
+		log.Fatalf("run server failed: %v", err)
+	}
+	svr.Close()
 }
