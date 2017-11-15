@@ -16,7 +16,8 @@ var (
 
 // PrintRawInfo prints the version information without long info.
 func PrintRawInfo(app string) {
-	fmt.Printf("Release Version (%s): %s\n", app, Version)
+	fmt.Printf("Welcome to %s\n", app)
+	fmt.Printf("Release Version: %s\n", Version)
 	fmt.Printf("Git Commit Hash: %s\n", GitHash)
 	fmt.Printf("Git Branch: %s\n", GitBranch)
 	fmt.Printf("UTC Build Time: %s\n", BuildTS)
@@ -24,7 +25,7 @@ func PrintRawInfo(app string) {
 
 // LogRawInfo prints the version information.
 func LogRawInfo(app string) {
-	log.Infof("Welcome to %s.", app)
+	log.Infof("Welcome to %s", app)
 	log.Infof("Release Version: %s", Version)
 	log.Printf("Git Commit Hash: %s", GitHash)
 	log.Printf("Git Branch: %s", GitBranch)
