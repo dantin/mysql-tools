@@ -4,7 +4,20 @@ import:
   version: ^1.0.3
 - package: gopkg.in/natefinch/lumberjack.v2
   version: ^2.1.0
+- package: github.com/BurntSushi/toml
+  version: ^0.3.0
 - package: github.com/juju/errors
+- package: github.com/siddontang/go-mysql
+  subpackages:
+      - client
+      - mysql
+      - packet
+      - replication
+- package: github.com/siddontang/go
+  subpackages:
+      - hack
+      - ioutil2
+      - sync2
 - package: golang.org/x/net
   repo: https://github.com/golang/net.git
   vcs: git

@@ -1,8 +1,25 @@
-hash: 1aca5cc99484f3efe2b4d07ebdb00dcaabecf4ace64d12dfe0e426801dbce786
-updated: 2017-11-14T10:59:07.677125928+08:00
+hash: 70acf623c43d9367746dc03c0b6216ef4bf71f7aa93c529db6c88ebff2ce1c07
+updated: 2017-11-15T18:05:30.036326657+08:00
 imports:
+- name: github.com/BurntSushi/toml
+  version: b26d9c308763d68093482582cea63d69be07a0f0
 - name: github.com/juju/errors
   version: c7d06af17c68cd34c835053720b21f6549d9b0ee
+- name: github.com/satori/go.uuid
+  version: 879c5887cd475cd7864858769793b2ceb0d44feb
+- name: github.com/siddontang/go
+  version: cb568a3e5cc06256f91a2da5a87455f717eb33f4
+  subpackages:
+  - hack
+  - ioutil2
+  - sync2
+- name: github.com/siddontang/go-mysql
+  version: 75a659885a3b11788fe6c8d801c3de8ebeac63a9
+  subpackages:
+  - client
+  - mysql
+  - packet
+  - replication
 - name: github.com/sirupsen/logrus
   version: f006c2ac4710855cf0f916dd6b77acf6b048dc6e
 - name: golang.org/x/crypto
@@ -16,7 +33,7 @@ imports:
   repo: https://github.com/golang/net.git
   vcs: git
 - name: golang.org/x/sys
-  version: 665f6529cca930e27b831a0d1dafffbe1c172924
+  version: bf42f188b9bc6f2cf5b8ee5a912ef1aedd0eba4c
   repo: https://github.com/golang/sys.git
   vcs: git
   subpackages:
