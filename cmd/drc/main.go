@@ -9,16 +9,19 @@ import (
 	"github.com/dantin/mysql-tools/drc"
 	"github.com/dantin/mysql-tools/pkg/logutil"
 	"github.com/dantin/mysql-tools/pkg/utils"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/juju/errors"
 	log "github.com/sirupsen/logrus"
 )
+
+const appName = "drc"
 
 // main is the bootstrap.
 func main() {
 	cfg := drc.NewConfig()
 	err := cfg.Parse(os.Args[1:])
 	if cfg.Version {
-		utils.PrintRawInfo("gravity")
+		utils.PrintRawInfo(appName)
 		os.Exit(0)
 	}
 	switch errors.Cause(err) {
@@ -33,7 +36,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("initialize log error: %s", err)
 	}
-	utils.LogRawInfo("gravity")
+	utils.LogRawInfo(appName)
 
 	svr := drc.NewServer(cfg)
 

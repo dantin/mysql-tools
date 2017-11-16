@@ -16,7 +16,7 @@ GOTEST  := $(GO) test
 
 PACKAGES := $$(go list ./...| grep -vE 'vendor')
 
-.PHONY: update clean check build test init
+.PHONY: update clean check build test init up down
 
 default: build
 
@@ -35,6 +35,14 @@ update:
 	glide update --strip-vendor --skip-test
 	@echo "removing test files"
 	glide vc --only-code --no-tests
+
+up:
+	@docker-compose -f docker-compose.yml up -d --force-recreate
+	@until mysql -h 127.0.0.1 -u root -e 'select 1' >/dev/null 2>&1; do sleep 1; echo "Waiting for DB to come up..."; done
+	bin/drc -config resources/conf/syncer.toml
+
+down:
+	@docker-compose -f docker-compose.yml down --remove-orphans
 
 init:
 	@ which glide >/dev/null || curl https://glide.sh/get | sh
