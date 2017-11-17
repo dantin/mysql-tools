@@ -1,0 +1,11 @@
+server-id = 9527
+
+meta = "./resources/syncer.meta"
+
+enable-gtid = true
+
+[source]
+host = "127.0.0.1"
+username = "root"
+password = ""
+port = 3306

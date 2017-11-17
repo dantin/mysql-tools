@@ -2,9 +2,32 @@ package: github.com/dantin/mysql-tools
 import:
 - package: github.com/sirupsen/logrus
   version: ^1.0.3
-- package: golang.org/x/crypto
-  repo: https://github.com/golang/crypto.git
+- package: gopkg.in/natefinch/lumberjack.v2
+  version: ^2.1.0
+- package: github.com/BurntSushi/toml
+  version: ^0.3.0
+- package: github.com/go-sql-driver/mysql
+  version: ^1.3.0
+- package: github.com/juju/errors
+- package: github.com/siddontang/go-mysql
+  subpackages:
+      - client
+      - mysql
+      - packet
+      - replication
+- package: github.com/siddontang/go
+  subpackages:
+      - hack
+      - ioutil2
+      - sync2
+- package: golang.org/x/net
+  repo: https://github.com/golang/net.git
   vcs: git
 - package: golang.org/x/sys
   repo: https://github.com/golang/sys.git
   vcs: git
+- package: golang.org/x/crypto
+  repo: https://github.com/golang/crypto.git
+  vcs: git
+testImport:
+- package: gopkg.in/check.v1
