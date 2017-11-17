@@ -8,4 +8,4 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./resources/etc:/etc/mysql/conf.d
+      - ./etc/mysql:/etc/mysql/conf.d

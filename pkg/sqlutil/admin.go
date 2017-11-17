@@ -2,8 +2,8 @@ package sqlutil
 
 import (
 	"database/sql"
-	"github.com/juju/errors"
 
+	"github.com/juju/errors"
 	log "github.com/sirupsen/logrus"
 )
 
