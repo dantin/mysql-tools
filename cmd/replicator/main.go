@@ -6,7 +6,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/dantin/mysql-tools/drc"
+	"github.com/dantin/mysql-tools/replicator"
 	"github.com/dantin/mysql-tools/pkg/logutil"
 	"github.com/dantin/mysql-tools/pkg/utils"
 	_ "github.com/go-sql-driver/mysql"
@@ -14,7 +14,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-const appName = "drc"
+const appName = "replicator"
 
 // main is the bootstrap.
 func main() {
