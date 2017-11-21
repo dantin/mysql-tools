@@ -21,7 +21,7 @@ PACKAGES := $$(go list ./...| grep -vE 'vendor')
 default: build
 
 build:
-	$(GOBUILD) -ldflags '$(LDFLAGS)' -o bin/drc cmd/drc/main.go
+	$(GOBUILD) -ldflags '$(LDFLAGS)' -o bin/replicator cmd/replicator/main.go
 
 test:
 	@echo "test"
@@ -39,7 +39,7 @@ update:
 up:
 	@docker-compose -f docker-compose.yml up -d --force-recreate
 	@until mysql -h 127.0.0.1 -u root -e 'select 1' >/dev/null 2>&1; do sleep 1; echo "Waiting for DB to come up..."; done
-	bin/drc -config etc/conf/syncer.toml
+	bin/replicator -config etc/conf/syncer.toml
 
 down:
 	@docker-compose -f docker-compose.yml down --remove-orphans
