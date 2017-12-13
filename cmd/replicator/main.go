@@ -18,7 +18,7 @@ const appName = "replicator"
 
 // main is the bootstrap.
 func main() {
-	cfg := drc.NewConfig()
+	cfg := replicator.NewConfig()
 	err := cfg.Parse(os.Args[1:])
 	if cfg.Version {
 		utils.PrintRawInfo(appName)
@@ -38,7 +38,7 @@ func main() {
 	}
 	utils.LogRawInfo(appName)
 
-	svr := drc.NewServer(cfg)
+	svr := replicator.NewServer(cfg)
 
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc,

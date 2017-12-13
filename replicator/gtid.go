@@ -1,4 +1,4 @@
-package drc
+package replicator
 
 import (
 	"github.com/juju/errors"
