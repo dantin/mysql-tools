@@ -6,9 +6,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/dantin/mysql-tools/replicator"
 	"github.com/dantin/mysql-tools/pkg/logutil"
 	"github.com/dantin/mysql-tools/pkg/utils"
+	"github.com/dantin/mysql-tools/replicator"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/juju/errors"
 	log "github.com/sirupsen/logrus"

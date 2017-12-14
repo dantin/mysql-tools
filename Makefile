@@ -15,6 +15,7 @@ GOBUILD := $(GO) build
 GOTEST  := $(GO) test
 
 PACKAGES := $$(go list ./...| grep -vE 'vendor')
+FILES    := $$(find . -name '*.go' -type f | grep -vE 'vendor')
 
 .PHONY: update clean check build test init up down
 
@@ -44,9 +45,15 @@ up:
 down:
 	@docker-compose -f docker-compose.yml down --remove-orphans
 
+fmt:
+	@go fmt ./...
+	@goimports -w $(FILES)
+	@echo done!
+
 init:
 	@ which glide >/dev/null || curl https://glide.sh/get | sh
 	@ which glide-vc >/dev/null || go get -v -u github.com/sgotti/glide-vc
+	@ which goimports >/dev/null || go get -u golang.org/x/tools/cmd/goimports
 	@echo "update testing framework"
 	@ go get -u gopkg.in/check.v1
 
